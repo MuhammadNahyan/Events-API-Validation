@@ -1,0 +1,38 @@
+{
+  "info": {
+    "name": "Events API Validation Demo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Event - Valid",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Hackathon\",\n  \"date\": \"2099-11-11T10:00:00.000Z\",\n  \"location\": \"Paris\",\n  \"description\": \"Coding event\",\n  \"attendees\": [\"foo@bar.com\"]\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": { "raw": "http://localhost:3000/events", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["events"] }
+      }
+    },
+    {
+      "name": "Create Event - Invalid Date",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Workshop\",\n  \"date\": \"2020-01-01T12:00:00.000Z\",\n  \"location\": \"London\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": { "raw": "http://localhost:3000/events", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["events"] }
+      }
+    }
+  ]
+}
