@@ -1,25 +1,41 @@
 # Events API Validation
 
-A Node.js/Express REST API for managing events, showcasing robust input validation and consistent error responses.
+A Node.js and Express REST API for managing events, focused on robust input validation and clean error handling.
+
+---
 
 ## Features
 
-- CRUD operations for events
-- Joi-powered input validation
-- Mongoose schema/model with DB-side validation
-- Custom error handler for clear, consistent messages
-- Comprehensive tests with Jest & Supertest
-- Postman collection with valid and invalid sample requests
+- Full CRUD operations for events
+- Request validation using Joi
+- Database-level validation using Mongoose
+- Custom validation (future event dates)
+- Centralized error handling middleware
+- Postman collection for manual API testing
+
+---
+
+## Tech Stack
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Joi
+
+---
 
 ## Event Model & Validation
 
-| Field       | Type      | Validation                             |
-|-------------|-----------|----------------------------------------|
-| title       | string    | required, min 3 chars, max 100         |
-| date        | string    | required, ISO date, must be in future  |
-| location    | string    | required, min 3 chars                  |
-| description | string    | optional, max 500                      |
-| attendees   | array     | optional, each a valid email address    |
+| Field        | Type   | Validation                              |
+|--------------|--------|------------------------------------------|
+| title        | string | required, min 3 chars, max 100          |
+| date         | string | required, ISO format, must be future    |
+| location     | string | required, min 3 chars                   |
+| description  | string | optional, max 500                      |
+| attendees    | array  | optional, valid email addresses         |
+
+---
 
 ## Example Error Response
 
@@ -28,30 +44,39 @@ A Node.js/Express REST API for managing events, showcasing robust input validati
   "error": "ValidationError",
   "message": "\"date\" must be a valid ISO date in the future"
 }
-```
 
-## Getting Started
+## Setup & Installation
 
-```bash
 npm install
 npm start
-```
 
-> For testing, ensure MongoDB is running locally or set `MONGODB_URI` in your environment.
+## Environment Variables
 
-## Testing
+Create a .env file:
+MONGO_URI=mongodb://127.0.0.1:27017/events-api
+PORT=4200
+Ensure MongoDB is running locally or set MONGO_URI in your environment.
 
-- Run tests: `npm test`
-- Import and use `postman_collection.json` in Postman
+## API Endpoints
 
-## Endpoints
+| Method | Endpoint    | Description     |
+| ------ | ----------- | --------------- |
+| POST   | /events     | Create event    |
+| GET    | /events     | Get all events  |
+| GET    | /events/:id | Get event by ID |
+| PUT    | /events/:id | Update event    |
+| DELETE | /events/:id | Delete event    |
 
-| Method | Endpoint     | Purpose         |
-|--------|--------------|-----------------|
-| POST   | /events      | Create event    |
-| GET    | /events      | List events     |
-| GET    | /events/:id  | Get event       |
-| PUT    | /events/:id  | Update event    |
-| DELETE | /events/:id  | Delete event    |
+## API Testing
 
----
+Import postman_collection.json into Postman and test the API
+Use sample requests for both valid and invalid cases
+Verify validation and error responses
+
+Project Purpose
+
+This project demonstrates backend best practices including:
+Layered validation (Joi + Mongoose)
+Clean API architecture
+Centralized error handling
+Manual API testing using Postman
