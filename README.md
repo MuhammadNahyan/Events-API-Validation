@@ -44,15 +44,17 @@ A Node.js and Express REST API for managing events, focused on robust input vali
   "error": "ValidationError",
   "message": "\"date\" must be a valid ISO date in the future"
 }
+```
 
 ## Setup & Installation
 
+```bash
 npm install
 npm start
+```
 
 ## Environment Variables
 
-<<<<<<< HEAD
 > Create a .env file:
 MONGO_URI=mongodb://127.0.0.1:27017/events-api
 PORT=4200`
@@ -83,33 +85,3 @@ PORT=4200`
 - Clean API Architecture
 - Centralized error handling
 - Manual API testing using Postman
-=======
-Create a .env file:
-MONGO_URI=mongodb://127.0.0.1:27017/events-api
-PORT=4200
-Ensure MongoDB is running locally or set MONGO_URI in your environment.
-
-## API Endpoints
-
-| Method | Endpoint    | Description     |
-| ------ | ----------- | --------------- |
-| POST   | /events     | Create event    |
-| GET    | /events     | Get all events  |
-| GET    | /events/:id | Get event by ID |
-| PUT    | /events/:id | Update event    |
-| DELETE | /events/:id | Delete event    |
-
-## API Testing
-
-Import postman_collection.json into Postman and test the API
-Use sample requests for both valid and invalid cases
-Verify validation and error responses
-
-Project Purpose
-
-This project demonstrates backend best practices including:
-Layered validation (Joi + Mongoose)
-Clean API architecture
-Centralized error handling
-Manual API testing using Postman
->>>>>>> 78fe6e959541f590b1bcc2ed0d62e6eaa5f4c204
