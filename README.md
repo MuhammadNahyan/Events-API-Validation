@@ -84,6 +84,7 @@ PORT=4200`
 - Centralized error handling
 - Manual API testing using Postman
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 Create a .env file:
 MONGO_URI=mongodb://127.0.0.1:27017/events-api
@@ -114,5 +115,7 @@ Clean API architecture
 Centralized error handling
 Manual API testing using Postman
 >>>>>>> 78fe6e959541f590b1bcc2ed0d62e6eaa5f4c204
+=======
+>>>>>>> eaff7be61223393164c974bdc899b6393a4129cc
 =======
 >>>>>>> eaff7be61223393164c974bdc899b6393a4129cc
