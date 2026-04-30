@@ -1,6 +1,6 @@
 {
   "info": {
-    "name": "Events API Validation Demo",
+    "name": "Events API - Validation Demo",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -13,14 +13,19 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Hackathon\",\n  \"date\": \"2099-11-11T10:00:00.000Z\",\n  \"location\": \"Paris\",\n  \"description\": \"Coding event\",\n  \"attendees\": [\"foo@bar.com\"]\n}",
-          "options": { "raw": { "language": "json" } }
+          "raw": "{\n  \"title\": \"Hackathon\",\n  \"date\": \"2099-11-11T10:00:00.000Z\",\n  \"location\": \"Karachi\",\n  \"description\": \"Coding event\",\n  \"attendees\": [\"test@example.com\"]\n}"
         },
-        "url": { "raw": "http://localhost:3000/events", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["events"] }
+        "url": {
+          "raw": "http://localhost:4200/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4200",
+          "path": ["events"]
+        }
       }
     },
     {
-      "name": "Create Event - Invalid Date",
+      "name": "Create Event - Invalid Date (Past)",
       "request": {
         "method": "POST",
         "header": [
@@ -28,10 +33,74 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Workshop\",\n  \"date\": \"2020-01-01T12:00:00.000Z\",\n  \"location\": \"London\"\n}",
-          "options": { "raw": { "language": "json" } }
+          "raw": "{\n  \"title\": \"Workshop\",\n  \"date\": \"2020-01-01T10:00:00.000Z\",\n  \"location\": \"Lahore\"\n}"
         },
-        "url": { "raw": "http://localhost:3000/events", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["events"] }
+        "url": {
+          "raw": "http://localhost:4200/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4200",
+          "path": ["events"]
+        }
+      }
+    },
+    {
+      "name": "Get All Events",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:4200/events",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4200",
+          "path": ["events"]
+        }
+      }
+    },
+    {
+      "name": "Get Event by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:4200/events/{{eventId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4200",
+          "path": ["events", "{{eventId}}"]
+        }
+      }
+    },
+    {
+      "name": "Update Event",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Updated Event Title\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:4200/events/{{eventId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4200",
+          "path": ["events", "{{eventId}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Event",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:4200/events/{{eventId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4200",
+          "path": ["events", "{{eventId}}"]
+        }
       }
     }
   ]
