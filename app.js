@@ -1,4 +1,5 @@
 const express = require("express");
+
 const eventRoutes = require("./routes/events.js");
 const errorHandler = require("./middleware/errorHandler.js");
 
